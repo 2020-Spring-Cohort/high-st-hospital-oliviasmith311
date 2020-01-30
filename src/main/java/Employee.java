@@ -1,4 +1,4 @@
-public class Employee {
+public class Employee extends Hospital{
 
     private String name;
     protected int idNumber;

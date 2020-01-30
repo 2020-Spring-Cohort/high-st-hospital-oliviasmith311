@@ -9,18 +9,11 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PatientTest {
 
     private Patient underTest;
-    private Patient testPatient;
+
 
     @BeforeEach
     void setUp() {
-        testPatient = new Patient(10, 10);
-        underTest.addPatient(testPatient);
-    }
-
-    @Test
-    public void shouldBeAbleToAddPatient() {
-        ArrayList<Patient> retrievedPatients = underTest.retrievePatientList();
-        assertEquals(1, retrievedPatients.size());
+        underTest = new Patient(10, 10);
     }
 
     @Test
@@ -34,9 +27,4 @@ public class PatientTest {
         int result = underTest.getHealthLevel();
         assertEquals(10, result);
     }
-
-//    @Test
-//    public void shouldBeAbleToDecreaseBloodLevel(){
-//        int result = underTest.drawBlood();
-//    }
 }
