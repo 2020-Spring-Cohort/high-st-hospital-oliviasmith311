@@ -13,7 +13,13 @@ public class PatientTest {
 
     @BeforeEach
     void setUp() {
-        underTest = new Patient(10, 10);
+        underTest = new Patient("TESTNAME", 20, 10);
+    }
+
+    @Test
+    public void shouldHaveName(){
+        String result = underTest.getPatientName();
+        assertEquals("TESTNAME", result);
     }
 
     @Test

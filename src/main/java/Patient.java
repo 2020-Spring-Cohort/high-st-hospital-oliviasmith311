@@ -6,11 +6,13 @@ public class Patient extends Hospital{
 
     private int bloodLevel;
     private int healthLevel;
+    protected String patientName;
 
 
-    public Patient(int bloodLevel, int healthLevel) {
+    public Patient(String patientName, int bloodLevel, int healthLevel) {
         this.bloodLevel = bloodLevel;
         this.healthLevel = healthLevel;
+        this.patientName = patientName;
     }
 
     public int getBloodLevel() {
@@ -19,5 +21,17 @@ public class Patient extends Hospital{
 
     public int getHealthLevel() {
         return healthLevel;
+    }
+
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public void giveBlood(int bloodAmount) {
+        bloodLevel -= bloodAmount;
+    }
+
+    public void feelBetter(int healthImprovementLevel) {
+        healthLevel += healthImprovementLevel;
     }
 }
