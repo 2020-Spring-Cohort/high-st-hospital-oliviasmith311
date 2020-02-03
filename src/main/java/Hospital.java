@@ -9,28 +9,32 @@ public class Hospital {
     private HashMap<String, Patient> patientList = new HashMap<>();
     ArrayList<Patient> retrievedPatientList = new ArrayList<>();
 
-    public void addEmployee(Employee testEmployee){
+    public Patient getOnePatient(String name) {
+        return patientList.get(name);
+    }
+
+    public void addEmployee(Employee testEmployee) {
         employeeList.put(testEmployee.getName(), testEmployee);
     }
 
-    public ArrayList<Employee> retrieveEmployeeList(){
+    public ArrayList<Employee> retrieveEmployeeList() {
         return new ArrayList<>(employeeList.values());
     }
 
-    public void addPatient(Patient testPatient){
+    public void addPatient(Patient testPatient) {
         patientList.put(testPatient.getPatientName(), testPatient);
     }
 
-    public ArrayList<Patient> retrievePatientList(){
+    public ArrayList<Patient> retrievePatientList() {
         retrievedPatientList = new ArrayList<>(patientList.values());
         return retrievedPatientList;
     }
 
-    public int retrievePatientListSize(){
+    public int retrievePatientListSize() {
         return patientList.size();
     }
 
-    public void printPatientList(){
+    public void printPatientList() {
         for (Patient patient : patientList.values()) {
             System.out.println("Name: " + patient.getPatientName() +
                     " Blood Level: " + patient.getBloodLevel() +
@@ -39,15 +43,15 @@ public class Hospital {
         }
     }
 
-    public void printEmployeeList(){
+    public void printEmployeeList() {
         for (Employee employee : employeeList.values()) {
             System.out.println("Name: " + employee.getName() +
                     " ID Number: " + employee.getIDNumber() +
                     " Job Title: " + employee.getJobTitle() +
                     " Salary: " + employee.getSalary());
-//            if (employee.getJobTitle() == "Doctor"){
-//                System.out.println(doctor.getSpecialty);
-//            }
+            if (employee instanceof Doctor) {
+                System.out.println(" Specialty: " + ((Doctor) employee).getSpecialty());
+            }
         }
     }
 }

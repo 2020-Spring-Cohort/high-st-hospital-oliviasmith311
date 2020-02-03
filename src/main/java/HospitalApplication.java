@@ -30,8 +30,9 @@ public class HospitalApplication {
         checkIfJanitorIsSweeping();
         drawAPatientsBlood();
         treatAPatient();
-
+        printGoodbye();
     }
+
 
     private static void hireEmployees() {
         hospital.addEmployee(doctor);
@@ -102,15 +103,16 @@ public class HospitalApplication {
         String chosenEmployee2 = chooseDoctorOrNurse();
         System.out.println("\nGreat! Which patient would you like " + chosenEmployee2 + " to treat?");
         String chosenPatient2 = choosePatient();
-        Patient patientToTreat = patient1;
+        System.out.println(chosenPatient2);
+        Patient patientToTreat = hospital.getOnePatient(chosenPatient2);
 
-        if (chosenPatient2 == "Bill") {
+        if (chosenPatient2.equals("Bill")) {
             patientToTreat = patient1;
-        } else if (chosenPatient2 == "Bob") {
+        } else if (chosenPatient2.equalsIgnoreCase("Bob")) {
             patientToTreat = patient2;
-        } else if (chosenPatient2 == "Beth") {
+        } else if (chosenPatient2.equals("Beth")) {
             patientToTreat = patient3;
-        } else if (chosenPatient2 == "Brenda") {
+        } else if (chosenPatient2.equals("Brenda")) {
             patientToTreat = patient4;
         }
 
@@ -145,13 +147,13 @@ public class HospitalApplication {
         String chosenPatient = choosePatient();
         Patient patientToDrawBlood = patient1;
 
-        if (chosenPatient == "Bill") {
+        if (chosenPatient.equals("Bill")) {
             patientToDrawBlood = patient1;
-        } else if (chosenPatient == "Bob") {
+        } else if (chosenPatient.equalsIgnoreCase("Bob")) {
             patientToDrawBlood = patient2;
-        } else if (chosenPatient == "Beth") {
+        } else if (chosenPatient.equals("Beth")) {
             patientToDrawBlood = patient3;
-        } else if (chosenPatient == "Brenda") {
+        } else if (chosenPatient.equals("Brenda")) {
             patientToDrawBlood = patient4;
         }
 
@@ -192,5 +194,9 @@ public class HospitalApplication {
         System.out.println(patient3.getPatientName());
         System.out.println(patient4.getPatientName());
         return input.nextLine();
+    }
+
+    private static void printGoodbye() {
+        System.out.println("\nThank you for visiting the High St. Hospital! Goodbye!");
     }
 }
