@@ -1,3 +1,4 @@
+import javax.print.Doc;
 import java.util.HashMap;
 import java.util.ArrayList;
 
@@ -7,7 +8,6 @@ public class Hospital {
     private HashMap<String, Employee> employeeList = new HashMap<>();
     private HashMap<String, Patient> patientList = new HashMap<>();
     ArrayList<Patient> retrievedPatientList = new ArrayList<>();
-
 
     public void addEmployee(Employee testEmployee){
         employeeList.put(testEmployee.getName(), testEmployee);
@@ -44,8 +44,10 @@ public class Hospital {
             System.out.println("Name: " + employee.getName() +
                     " ID Number: " + employee.getIDNumber() +
                     " Job Title: " + employee.getJobTitle() +
-                    " Salary: " + employee.getSalary()
-            );
+                    " Salary: " + employee.getSalary());
+//            if (employee.getJobTitle() == "Doctor"){
+//                System.out.println(doctor.getSpecialty);
+//            }
         }
     }
 }

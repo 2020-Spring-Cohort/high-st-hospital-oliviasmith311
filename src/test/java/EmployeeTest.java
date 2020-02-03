@@ -109,7 +109,7 @@ public class EmployeeTest {
         Hospital underTest = new Hospital();
         underTest.addPatient(testPatient);
         underTest.addPatient(testPatient2);
-        int result = testNurse.getNumberOfPatients();
+        int result = testNurse.getNumberOfPatients(underTest);
         assertEquals(2, result);
     }
 
@@ -127,7 +127,7 @@ public class EmployeeTest {
         underTest.addPatient(testPatient3);
         underTest.addPatient(testPatient4);
         underTest.addPatient(testPatient5);
-        boolean result = testReceptionist.checkIfOnPhone();
+        boolean result = testReceptionist.checkIfOnPhone(underTest);
         assertEquals(true, result);
     }
 
@@ -139,7 +139,7 @@ public class EmployeeTest {
         Patient testPatient2 = new Patient("TESTNAME2", 20, 10);
         underTest.addPatient(testPatient);
         underTest.addPatient(testPatient2);
-        boolean result = testReceptionist.checkIfOnPhone();
+        boolean result = testReceptionist.checkIfOnPhone(underTest);
         assertEquals(false, result);
     }
 
@@ -157,7 +157,7 @@ public class EmployeeTest {
         underTest.addPatient(testPatient3);
         underTest.addPatient(testPatient4);
         underTest.addPatient(testPatient5);
-        boolean result = testJanitor.checkIfSweeping();
+        boolean result = testJanitor.checkIfSweeping(underTest);
         assertEquals(false, result);
     }
 
@@ -169,7 +169,7 @@ public class EmployeeTest {
         Patient testPatient2 = new Patient("TESTNAME2", 20, 10);
         underTest.addPatient(testPatient);
         underTest.addPatient(testPatient2);
-        boolean result = testJanitor.checkIfSweeping();
+        boolean result = testJanitor.checkIfSweeping(underTest);
         assertEquals(true, result);
     }
 }

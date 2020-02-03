@@ -18,7 +18,7 @@ public class HospitalApplication {
 
     public static void main(String[] args) {
 
-        System.out.println("Welcome to the High St. Hospital.");
+        System.out.println("Welcome to the High St. Hospital!");
         hireEmployees();
         addPatients();
         payEmployeeList();
@@ -28,7 +28,9 @@ public class HospitalApplication {
         addMorePatients();
         checkIfReceptionistOnPhone();
         checkIfJanitorIsSweeping();
+        drawAPatientsBlood();
         treatAPatient();
+
     }
 
     private static void hireEmployees() {
@@ -38,7 +40,7 @@ public class HospitalApplication {
         hospital.addEmployee(nurse);
         hospital.addEmployee(receptionist);
         hospital.addEmployee(janitor);
-        System.out.println("\nLet's see a list of our employees.");
+        System.out.println("\nLet's see a list of our employees.\n");
         hospital.printEmployeeList();
     }
 
@@ -47,21 +49,21 @@ public class HospitalApplication {
         hospital.addPatient(patient2);
         hospital.addPatient(patient3);
         hospital.addPatient(patient4);
-        System.out.println("\nLet's see a list of our patients.");
+        System.out.println("\nLet's see a list of our patients.\n");
         hospital.printPatientList();
     }
 
     private static void payEmployeeList() {
         System.out.println("\nHave our employees been paid? The answer is " + employee.getIsPaid() + "!");
-        System.out.println("Let's pay our employees");
+        System.out.println("Let's pay our employees\n");
         employee.payEmployees(1500);
-        System.out.println("Have our employees been paid? The answer is " + employee.getIsPaid() + "!");
+        System.out.println("Have our employees been paid? The answer is now " + employee.getIsPaid() + "!");
         System.out.println("Now our employees can ball out! Cha-ching!");
     }
 
     private static void getNumberOfNursePatients() {
         System.out.println("\nLet's see how many patients our nurse is helping.");
-        System.out.println(hospital.retrievePatientListSize());
+        System.out.println("Currently, our nurse is helping " + hospital.retrievePatientListSize() + " patients.");
         System.out.println("Wow! That's a lot of patients! " + nurse.getName() + " is truly a superhero.");
     }
 
@@ -97,25 +99,25 @@ public class HospitalApplication {
     private static void treatAPatient() {
         System.out.println("\nLet's treat one of our patients.");
         System.out.println("Which doctor or nurse would you like to have treat a patient?");
-        String chosenEmployee = chooseDoctorOrNurse();
-        System.out.println("Great! Which patient would you like " + chosenEmployee + " to treat?");
-        String chosenPatient = choosePatient();
-        Patient patientToTreat = new Patient("TESTNAME", 20, 10);
+        String chosenEmployee2 = chooseDoctorOrNurse();
+        System.out.println("\nGreat! Which patient would you like " + chosenEmployee2 + " to treat?");
+        String chosenPatient2 = choosePatient();
+        Patient patientToTreat = patient1;
 
-        if (chosenPatient == "Bill") {
+        if (chosenPatient2 == "Bill") {
             patientToTreat = patient1;
-        } else if (chosenPatient == "bOB") {
+        } else if (chosenPatient2 == "Bob") {
             patientToTreat = patient2;
-        } else if (chosenPatient == "Beth") {
+        } else if (chosenPatient2 == "Beth") {
             patientToTreat = patient3;
-        } else if (chosenPatient == "Brenda") {
+        } else if (chosenPatient2 == "Brenda") {
             patientToTreat = patient4;
         }
 
-        System.out.println(patientToTreat.getPatientName() + "'s current health is at " + patientToTreat.getHealthLevel() + ".");
-        System.out.println(chosenEmployee + " is going to treat " + chosenPatient + "!");
+        System.out.println("\n" + patientToTreat.getPatientName() + "'s current health is at " + patientToTreat.getHealthLevel() + ".");
+        System.out.println("\n" + chosenEmployee2 + " is going to treat " + chosenPatient2 + "!");
 
-        switch (chosenEmployee) {
+        switch (chosenEmployee2) {
             case "John":
                 doctor.treatPatient(patientToTreat);
                 break;
@@ -130,9 +132,50 @@ public class HospitalApplication {
                 break;
         }
 
-        System.out.println("Let's see how " + patientToTreat.getPatientName() + "is feeling!");
+        System.out.println("\nLet's see how " + patientToTreat.getPatientName() + " is feeling!");
         System.out.println(patientToTreat.getPatientName() + "'s new health level is " + patientToTreat.getHealthLevel());
         System.out.println(patientToTreat.getPatientName() + " is feeling much better!");
+    }
+
+    private static void drawAPatientsBlood() {
+        System.out.println("\nLet's draw blood from a patient.");
+        System.out.println("Which doctor or nurse would you like to have draw blood?");
+        String chosenEmployee = chooseDoctorOrNurse();
+        System.out.println("\nGreat! Which patient would you like " + chosenEmployee + " to draw blood from?");
+        String chosenPatient = choosePatient();
+        Patient patientToDrawBlood = patient1;
+
+        if (chosenPatient == "Bill") {
+            patientToDrawBlood = patient1;
+        } else if (chosenPatient == "Bob") {
+            patientToDrawBlood = patient2;
+        } else if (chosenPatient == "Beth") {
+            patientToDrawBlood = patient3;
+        } else if (chosenPatient == "Brenda") {
+            patientToDrawBlood = patient4;
+        }
+
+        System.out.println("\n" + patientToDrawBlood.getPatientName() + "'s current blood level is at " + patientToDrawBlood.getBloodLevel() + ".");
+        System.out.println("\n" + chosenEmployee + " is going to draw blood from " + chosenPatient + "!");
+
+        switch (chosenEmployee) {
+            case "John":
+                doctor.drawBlood(patientToDrawBlood);
+                break;
+            case "James":
+                doctor2.drawBlood(patientToDrawBlood);
+                break;
+            case "Jill":
+                doctor3.drawBlood(patientToDrawBlood);
+                break;
+            case "Jim":
+                nurse.drawBlood(patientToDrawBlood);
+                break;
+        }
+
+        System.out.println("\nLet's see what " + patientToDrawBlood.getPatientName() + "'s blood level is now!");
+        System.out.println(patientToDrawBlood.getPatientName() + "'s new blood level is " + patientToDrawBlood.getBloodLevel());
+        System.out.println(patientToDrawBlood.getPatientName() + " is feeling a bit woozy!");
     }
 
     private static String chooseDoctorOrNurse() {
